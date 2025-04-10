@@ -1,0 +1,38 @@
+[
+    { "name": "Env grid", "data": {
+        "type": "grid",
+        "splitX": 64,
+        "splitY": 64,
+        "style": {
+            "type": "fill",
+            "fillColor": "#aa5577",
+            "strokeColor": "#aa5577"
+        }
+    } },
+
+    { "name": "Fields grid", "data": {
+        "type": "grid",
+        "splitX": 8,
+        "splitY": 8,
+        "style": {
+            "type": "fill",
+            "fillColor": "white",
+            "strokeColor": "white"
+        }
+    } },
+
+    { "name": "World origin", "data": {
+        "type": "featurelist",
+        "features": [
+            {
+                "type": "point",
+                "position": [0, 0]
+            }
+        ],
+        "style": {
+            "type": "circle",
+            "radius": 3,
+            "fillColor": "red"
+        }
+    } }
+]
