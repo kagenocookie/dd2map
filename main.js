@@ -67,7 +67,7 @@ function jsonToStyle(data) {
 
 function jsonToFeature(feature) {
   if (feature.type === 'point') {
-    return new ol.Feature({ geometry: new ol.geom.Point(feature.position) })
+    return new ol.Feature({ geometry: new ol.geom.Point([feature.position[0], -feature.position[1]]) })
   }
   if (feature.type === 'line') {
     return new ol.Feature({ geometry: new ol.geom.LineString([feature.from, feature.to]) })
