@@ -26,3 +26,17 @@ body {
 
   color: rgb(53, 39, 21);
 }
+
+#tools {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  height: auto;
+  width: 420px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#tools textarea {
+  width: 100%;
+}

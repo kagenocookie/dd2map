@@ -150,6 +150,8 @@ const coordX = infoContainer.querySelector('#coords-x');
 const coordY = infoContainer.querySelector('#coords-y');
 const fieldId = infoContainer.querySelector('#field-id');
 const envId = infoContainer.querySelector('#env-id');
+/** @type HTMLTextAreaElement */
+const contentInput = document.querySelector('#custom-content-input');
 function update() {
   coordX.innerHTML = state.mouse.x;
   coordY.innerHTML = -state.mouse.y;
@@ -158,4 +160,12 @@ function update() {
   envId.innerHTML = coordToGridId(worldSizeX / 64, worldSizeY / 64, 64, state.mouse);
   window.requestAnimationFrame(update);
 }
+contentInput.addEventListener('input', () => {
+  try {
+    const json = JSON.parse(contentInput.value);
+    map.addLayer(createVectorLayerFromContent(json));
+  } catch (e) {
+    console.error('Invalid json ', e.message);
+  }
+})
 window.requestAnimationFrame(update);
