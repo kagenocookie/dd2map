@@ -145,11 +145,18 @@ function coordToGridId(splitX, splitY, rowCount, coords) {
   return y * rowCount + x;
 }
 
+function coordToGridId2(splitX, splitY, rowCount, coords) {
+  const x = Math.floor((coords.x - worldData.Offset.x) / splitX);
+  const y = Math.floor((-coords.y - worldData.Offset.y) / splitY);
+  return y * rowCount + x;
+}
+
 const infoContainer = document.querySelector('#hover-info');
 const coordX = infoContainer.querySelector('#coords-x');
 const coordY = infoContainer.querySelector('#coords-y');
 const fieldId = infoContainer.querySelector('#field-id');
 const envId = infoContainer.querySelector('#env-id');
+const cellId = infoContainer.querySelector('#cell-id');
 /** @type HTMLTextAreaElement */
 const contentInput = document.querySelector('#custom-content-input');
 function update() {
@@ -158,6 +165,7 @@ function update() {
 
   fieldId.innerHTML = coordToGridId(worldSizeX / 8, worldSizeY / 8, 8, state.mouse);
   envId.innerHTML = coordToGridId(worldSizeX / 64, worldSizeY / 64, 64, state.mouse);
+  cellId.innerHTML = coordToGridId2(128 / 16, 128 / 16, 16, {x: (state.mouse.x + worldSizeX) % 128, y: (state.mouse.y + worldSizeX) % 128}) % 256;
   window.requestAnimationFrame(update);
 }
 contentInput.addEventListener('input', () => {
